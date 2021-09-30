@@ -4,11 +4,12 @@ ENV GOOS=linux
 ENV GOARCH=amd64
 ENV CGO_ENABLED=0
 ENV GO111MODULE=on
+ENV GOPROXY="https://goproxy.cn"
 
 WORKDIR /go/src/simulator-server
 
 COPY go.mod go.sum ./
-RUN go mod download
+RUN go mod download -x
 
 COPY . .
 RUN go build -v -o ./bin/simulator simulator.go

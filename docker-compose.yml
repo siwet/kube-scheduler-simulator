@@ -17,6 +17,9 @@ services:
     image: simulator-frontend
     restart: always
     container_name: simulator-frontend
+    # network_mode: host
+    environment:
+    - NUXT_HOST=0.0.0.0
     ports:
     - "3000:3000"
     tty: true
